@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from w3crm.dexignzone.com/xhtml/manage-client.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Jul 2023 07:26:28 GMT -->
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<meta name="robots" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="W3crm:Customer Relationship Management Admin Bootstrap 5 Template">
+	<meta property="og:title" content="W3crm:Customer Relationship Management Admin Bootstrap 5 Template">
+	<meta property="og:description" content="W3crm:Customer Relationship Management Admin Bootstrap 5 Template">
+	<meta property="og:image" content="social-image.png">
+	<meta name="format-detection" content="telephone=no">
+	
+	<!-- PAGE TITLE HERE -->
+	<title>W3CRM Customer Relationship Management</title>
+	
+	<!-- FAVICONS ICON -->
+	<link rel="shortcut icon" type="image/png" href="../../public/assets/images/favicon.png">
+	
+	<link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+	<link href="vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+	<link href="../../cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css" rel="stylesheet">
+	<link href="vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+	<!-- tagify-css -->
+	<link href="vendor/tagify/dist/tagify.css" rel="stylesheet">
+	
+	<!-- Style css -->
+    <link href="../../public/assets/css/style.css" rel="stylesheet">
+	
+</head>
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+   <div id="preloader">
+		<div class="lds-ripple">
+			<div></div>
+			<div></div>
+		</div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+        
+				<!-- Nav header start -->
+				<%- include("../../utils/navheader") %>
+				<!-- Nav header end -->
+				
+				<!-- Chat box start -->
+					<%- include("../../utils/chatbox") %>
+				<!-- Chat box End -->
+				
+		
+				<!-- Header start -->
+					<%- include("../../utils/header") %>
+				<!-- Header end ti-comment-alt -->
+		
+		
+				<!-- Sidebar start -->
+					<%- include("../../utils/sidebar") %>
+				<!-- Sidebar end -->
+		
+		<!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->	
+			<div class="page-titles">
+				<ol class="breadcrumb">
+					<li><h5 class="bc-title">Manage Client</h5></li>
+					<li class="breadcrumb-item"><a href="javascript:void(0)">
+						<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M2.125 6.375L8.5 1.41667L14.875 6.375V14.1667C14.875 14.5424 14.7257 14.9027 14.4601 15.1684C14.1944 15.4341 13.8341 15.5833 13.4583 15.5833H3.54167C3.16594 15.5833 2.80561 15.4341 2.53993 15.1684C2.27426 14.9027 2.125 14.5424 2.125 14.1667V6.375Z" stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M6.375 15.5833V8.5H10.625V15.5833" stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+						Home </a>
+					</li>
+					<li class="breadcrumb-item active"><a href="javascript:void(0)">Manage Client</a></li>
+				</ol>
+				<a class="text-primary fs-13" data-bs-toggle="offcanvas" href="#offcanvasExample1" role="button" aria-controls="offcanvasExample1">+ Add Task</a>
+			</div>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xl-12">
+						<div class="card">
+							<div class="card-body p-0">
+								<div class="table-responsive active-projects manage-client">
+								<div class="tbl-caption">
+									<h4 class="heading mb-0">Manage Client</h4>
+								</div>
+								
+									<table id="reports-tbl" class="table" >
+										<thead>
+											<tr>
+												<th>Profile Pic</th>
+												<th>User Email</th>
+												<th>Contact</th>
+												<th>Gender</th>
+												<th>Location</th>
+												<th>Status</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<%
+										for(let i=0;i<data.length;i++){
+											%>
+											<tbody>
+												<tr>
+													<td>
+														<div class="products">
+															<img src="public/user_profile/<%= data[i].image %>" class="avatar avatar-md" alt="">
+															<div>
+																<h6><%= data[i].u_name %></h6>
+																	
+															</div>	
+														</div>
+													</td>
+													
+												<!-- </tr> -->
+												
+												
+												<td><span class="text-primary"><%= data[i].u_email %></span></td>
+												<td><span><%= data[i].u_mobile %></span></td>
+												<td><span><%= data[i].gender %></span></td>	
+												<td><span><%= data[i].city %>,<%= data[i].state %></span></td>
+												<td><span class="badge badge-success light border-0"><%= data[i].status %></span></td>
+												<% _id = data[i]._id.toString(); %>
+
+												<td>
+								<form action="admin_user_manager_status" method="post">
+
+												<input type="hidden" value="<%=_id%>" name="_id">
+												<% let status2 = data[i].status.localeCompare("Active") %> 
+
+												<% if(status2 ==0){ %>
+													<button  type="submit" value="Block" name="answer">Block</button>
+													</td>
+												<% }else{ %>
+													<button  type="submit" value="Active" name="answer">Activate</button>
+													</td>
+												<%} %>
+
+
+											</tr>
+											
+										</form>
+											
+										</tbody>
+										<%
+									}
+									%>	
+									</table>
+								
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+		
+        <!--**********************************
+            Content body end
+        ***********************************-->
+		<!-- Scrollable modal -->
+			<div class="offcanvas offcanvas-end customeoff" tabindex="-1" id="offcanvasExample1">
+		  <div class="offcanvas-header">
+		  <h5 class="modal-title" id="#gridSystemModal1">Add New Task</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">
+				<i class="fa-solid fa-xmark"></i>
+			</button>
+		  </div>
+		  <div class="offcanvas-body">
+			<div class="container-fluid">
+				<form >
+					<div class="row">
+						<div class="col-xl-6 mb-3">
+							<label for="exampleFormControlInputfirst" class="form-label">Title<span class="text-danger">*</span></label>
+							<input type="text" class="form-control" id="exampleFormControlInputfirst" placeholder="Title">
+						</div>	
+						<div class="col-xl-6 mb-3">
+							<label class="form-label">Project<span class="text-danger">*</span></label>
+							<select class="default-select form-control">
+								<option  data-display="Select">Project</option>
+								<option value="html">Salesmate</option>
+								<option value="css">ActiveCampaign</option>
+								<option value="javascript">Insightly</option>
+							</select>
+						</div>	
+						<div class="col-xl-6 mb-3">
+							<label for="exampleFormControlInputthree" class="form-label">Start Date<span class="text-danger">*</span></label>
+							<input type="date" class="form-control" id="exampleFormControlInputthree">
+						</div>
+						<div class="col-xl-6 mb-3">
+							<label for="exampleFormControlInputfour" class="form-label">End Date<span class="text-danger">*</span></label>
+							<input type="date" class="form-control" id="exampleFormControlInputfour">
+						</div>
+						<div class="col-xl-6 mb-3">
+							<label class="form-label">Estimated Hour<span class="text-danger">*</span></label>
+							<div class="input-group">
+								<input type="text" class="form-control" value="09:30"><span class="input-group-text"><i
+											class="fas fa-clock"></i></span>
+                            </div>
+						</div>
+						<div class="col-xl-6 mb-3">
+							<label class="form-label">Status<span class="text-danger">*</span></label>
+							<select class="default-select form-control">
+								<option  data-display="Select">Status</option>
+								<option value="html">In Progess</option>
+								<option value="css">Pending</option>
+								<option value="javascript">Completed</option>
+							</select>
+						</div>
+						<div class="col-xl-6 mb-3">
+							<label class="form-label">priority<span class="text-danger">*</span></label>
+							<select class="default-select form-control">
+								<option  data-display="Select">priority</option>
+								<option value="html">Hight</option>
+								<option value="css">Medium</option>
+								<option value="javascript">Low</option>
+							</select>
+						</div>
+						<div class="col-xl-6 mb-3">
+							<label class="form-label">Category<span class="text-danger">*</span></label>
+							<select class="default-select form-control">
+								<option  data-display="Select">Category</option>
+								<option value="html">Designing</option>
+								<option value="css">Development</option>
+								<option value="javascript">react developer</option>
+							</select>
+						</div>
+						<div class="col-xl-6 mb-3">
+							<label class="form-label">Permission<span class="text-danger">*</span></label>
+							<select class="default-select form-control">
+								<option  data-display="Select">Permission</option>
+								<option value="html">Public</option>
+								<option value="css">Private</option>
+							</select>
+						</div>
+						<div class="col-xl-6 mb-3">
+							<label class="form-label">Deadline add<span class="text-danger">*</span></label>
+							<select class="default-select form-control">
+								<option  data-display="Select">Deadline</option>
+								<option value="html">Yes</option>
+								<option value="css">No</option>
+							</select>
+						</div>
+						<div class="col-xl-6 mb-3">
+							<label class="form-label">Assigned to<span class="text-danger">*</span></label>
+							<select class="default-select form-control">
+								<option  data-display="Select">Assigned</option>
+								<option value="html">Bernard</option>
+								<option value="css">Sergey Brin</option>
+								<option value="javascript"> Larry Ellison</option>
+							</select>
+						</div>
+						<div class="col-xl-6 mb-3">
+							<label class="form-label">Responsible Person<span class="text-danger">*</span></label>
+							<input name="tagify" class="form-control py-0 ps-0" value='James, Harry'>
+							
+						</div>
+						<div class="col-xl-12 mb-3">
+							<label class="form-label">Description<span class="text-danger">*</span></label>
+							<textarea rows="3" class="form-control"></textarea>
+						</div>
+						<div class="col-xl-12 mb-3">
+							<label class="form-label">Summary<span class="text-danger">*</span></label>
+							<textarea rows="3" class="form-control"></textarea>
+						</div>
+						
+					</div>
+					<div>
+						<button class="btn btn-primary me-1">Help Desk</button>
+						<button class="btn btn-danger light ms-1">Cancel</button>
+					</div>
+				</form>
+			  </div>
+		  </div>
+		</div>	
+		
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+               <p>Copyright © Developed by <a href="https://dexignzone.com/" target="_blank">DexignZone</a> 2023</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+		<!--**********************************
+           Support ticket button start
+        ***********************************-->
+		
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+	</div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="../../public/assets/js/vendor/global/global.min.js"></script>
+	<script src="../../public/assets/js/vendor/chart.js/Chart.bundle.min.js"></script>
+	<script src="../../public/assets/js/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+	<script src="../../public/assets/js/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+	
+	<!-- Dashboard 1 -->
+	<script src="../../public/assets/js/vendor/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="../../public/assets/js/vendor/datatables/js/dataTables.buttons.min.js"></script>
+	<script src="../../public/assets/js/vendor/datatables/js/buttons.html5.min.js"></script>
+	<script src="../../public/assets/js/vendor/datatables/js/jszip.min.js"></script>
+	<script src="../../public/assets/js/plugins-init/datatables.init.js"></script>
+	
+	<!-- tagify -->
+	<script src="../../public/assets/js/vendor/tagify/dist/tagify.js"></script>
+	
+	<!-- Apex Chart -->
+	<script src="../../public/assets/js/vendor/bootstrap-datetimepicker/js/moment.js"></script>
+	<script src="../../public/assets/js/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+	
+	<!-- Vectormap -->
+    <script src="../../public/assets/js/custom.js"></script>
+	<script src="../../public/assets/js/deznav-init.js"></script>
+	<script src="../../public/assets/js/demo.js"></script>
+    <script src="../../public/assets/js/styleSwitcher.js"></script>
+	
+		
+	
+	<script src="../services/admin_user_manager_service.js"></script>
+	
+</body>
+
+<!-- Mirrored from w3crm.dexignzone.com/xhtml/manage-client.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Jul 2023 07:26:28 GMT -->
+</html>

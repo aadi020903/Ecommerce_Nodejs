@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from w3crm.dexignzone.com/xhtml/customer-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Jul 2023 07:26:36 GMT -->
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<meta name="robots" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="W3crm:Customer Relationship Management Admin Bootstrap 5 Template">
+	<meta property="og:title" content="W3crm:Customer Relationship Management Admin Bootstrap 5 Template">
+	<meta property="og:description" content="W3crm:Customer Relationship Management Admin Bootstrap 5 Template">
+	<meta property="og:image" content="social-image.png">
+	<meta name="format-detection" content="telephone=no">
+	
+	<!-- PAGE TITLE HERE -->
+	<title>W3CRM Customer Relationship Management</title>
+	<!-- FAVICONS ICON -->
+	<link rel="shortcut icon" type="image/png" href="../../public/assets/images/favicon.png">
+	
+	<link href="../../public/assets/js/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+	<link href="../../public/assets/js/vendor/swiper/css/swiper-bundle.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.4/nouislider.min.css">
+	<link href="../../public/assets/js/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+	<link href="../../public/assets/js/vendor/jvmap/jquery-jvectormap.css" rel="stylesheet">
+	<link href="../../cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css" rel="stylesheet">
+	<link href="../../public/assets/js/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+	
+	<!-- tagify-css -->
+	
+	<!-- Style css -->
+    <link href="../../public/assets/css/style.css" rel="stylesheet">
+	
+</head>
+<body data-typography="poppins" data-theme-version="light" data-layout="vertical" data-nav-headerbg="black" data-headerbg="color_1">
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+		<div class="lds-ripple">
+			<div></div>
+			<div></div>
+		</div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+        
+		<!-- Nav header start -->
+		<%- include("../../utils/navheader") %>
+        <!-- Nav header end -->
+		
+		<!-- Chat box start -->
+			<%- include("../../utils/chatbox") %>
+		<!-- Chat box End -->
+		
+
+		<!-- Header start -->
+			<%- include("../../utils/header") %>
+		<!-- Header end ti-comment-alt -->
+
+
+        <!-- Sidebar start -->
+			<%- include("../../utils/sidebar") %>
+		<!-- Sidebar end -->
+
+		<!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->	
+			<div class="page-titles">
+				<ol class="breadcrumb">
+					<li><h5 class="bc-title">Dashboard</h5></li>
+					<li class="breadcrumb-item"><a href="javascript:void(0)">
+						<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M2.125 6.375L8.5 1.41667L14.875 6.375V14.1667C14.875 14.5424 14.7257 14.9027 14.4601 15.1684C14.1944 15.4341 13.8341 15.5833 13.4583 15.5833H3.54167C3.16594 15.5833 2.80561 15.4341 2.53993 15.1684C2.27426 14.9027 2.125 14.5424 2.125 14.1667V6.375Z" stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M6.375 15.5833V8.5H10.625V15.5833" stroke="#2C2C2C" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+						Home </a>
+					</li>
+					<li class="breadcrumb-item active"><a href="javascript:void(0)">Dashboard</a></li>
+				</ol>
+				<a class="text-primary fs-13" data-bs-toggle="offcanvas" href="#offcanvasExample1" role="button" aria-controls="offcanvasExample1">+ Add Task</a>
+			</div>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xl-8">
+						<div class="card h-auto">
+							<div class="card-body">
+								<div class="c-profile text-center">
+									<img src="../../public/admin_profile/<%= admin_data.image %>" class="rounded-circle mb-2">
+
+									<h4><%= admin_data.a_name %></h4>
+								</div>
+								<div class="c-details">
+									<ul>
+										<li>
+											<span>Email</span>
+											<p><%= admin_data.a_email %></p>
+										</li>
+										<li>
+											<span>Phone</span>
+											<p><%= admin_data.a_mobile %></p>
+										</li>
+										<li>
+											<span>Address</span>
+											<p><%= admin_data.address %></p>
+										</li>
+										<li>
+											<span>City</span>
+											<p><%= admin_data.city %>, <%= admin_data.state %></p>
+										</li>
+									</ul>
+								</div>
+	
+								<div class="d-flex mt-4 justify-content-end">
+									<a href="javascript:void(0)" class="btn btn-danger btn-sm light me-2"><i class="fa-solid fa-trash me-1"></i>Delete</a>
+									<button type="button" class="modal-btn btn btn-primary btn-sm  ms-2 " data-bs-toggle="modal" data-bs-target="#exampleModal3">
+										<i class="fa-solid fa-pen-to-square me-1"></i>
+										<span><a href="../admin_profile_update" style="color: white;">Edit</a> </span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+				
+		<div class="modal fade" id="exampleModal3" tabindex="-1"  aria-hidden="true">
+			<div class="modal-dialog">
+			  <div class="modal-content">
+				<div class="modal-header ">
+				  <h5 class="modal-title">Edit Your Profile</h5>
+				  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					  <label class="form-label">Email</label>
+					  <input type="email" class="form-control mb-3" id="exampleInputEmail7"  placeholder="Enter email">
+					  <label class="form-label">Phone</label>                    
+					  <input type="number" class="form-control mb-3" id="exampleInputEmail8"  placeholder="Enter No.">
+					  <label class="form-label">Date Of Birth</label>                    
+					  <input type="date" class="form-control mb-3" id="exampleInputEmail8"  placeholder="Enter No.">
+					  <label class="form-label">Position</label>                           
+					  <input type="text" class="form-control mb-3" id="exampleInputEmail9"  placeholder="Enter Position">
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-danger light btn-sm" data-bs-dismiss="modal">Close</button>
+				  <button type="button" class="btn btn-primary btn-sm">Save changes</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+               <p>Copyright © Developed by <a href="https://dexignzone.com/" target="_blank">DexignZone</a> 2023</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+		<!--**********************************
+           Support ticket button start
+        ***********************************-->
+		
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+	</div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="../../public/assets/js/vendor/global/global.min.js"></script>
+
+	<script src="../../public/assets/js/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+	
+	<!-- Dashboard 1 -->
+	
+	
+	<!-- tagify -->
+	 
+	<script src="../../public/assets/js/vendor/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="../../public/assets/js/vendor/datatables/js/dataTables.buttons.min.js"></script>
+	<script src="../../public/assets/js/vendor/datatables/js/buttons.html5.min.js"></script>
+	<script src="../../public/assets/js/vendor/datatables/js/jszip.min.js"></script>
+	<script src="../../public/assets/js/plugins-init/datatables.init.js"></script>
+   
+	<!-- Apex Chart -->
+	
+	<script src="../../public/assets/js/vendor/bootstrap-datetimepicker/js/moment.js"></script>
+	<script src="../../public/assets/js/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+	
+
+	<!-- Vectormap -->
+    <script src="../../public/assets/js/custom.js"></script>
+	<script src="../../public/assets/js/deznav-init.js"></script>
+	<script src="../../public/assets/js/demo.js"></script>
+    <script src="../../public/assets/js/styleSwitcher.js"></script>
+	
+	
+	
+</body>
+
+<!-- Mirrored from w3crm.dexignzone.com/xhtml/customer-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Jul 2023 07:26:37 GMT -->
+</html>
+
+
+
